@@ -1,0 +1,27 @@
+# Python virtual environment
+venv/
+__pycache__/
+*.pyc
+*.log
+.venv/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+
+# Environment variables and secrets
+.env
+.env.*
+*.secret
+
+# Generated service status files
+test1/service_status/*.json
+
+# Ansible temporary files
+*.retry
+
+# Editor and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

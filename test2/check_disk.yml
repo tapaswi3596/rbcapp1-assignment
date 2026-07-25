@@ -1,0 +1,31 @@
+---
+- name: Check root filesystem usage
+  ansible.builtin.shell:
+    cmd: df -P / | awk 'NR==2 {gsub("%","",$5); print $5}'
+  register: disk_usage
+  changed_when: false
+
+- name: Display disk usage
+  ansible.builtin.debug:
+    msg: "{{ inventory_hostname }} is using {{ disk_usage.stdout }}% of disk space"
+
+- name: Display disk usage warning
+  ansible.builtin.debug:
+    msg: "WARNING: {{ inventory_hostname }} disk usage is above 80%"
+  when: disk_usage.stdout | int > 80
+
+- name: Send disk usage alert email
+  community.general.mail:
+    host: "{{ smtp_host }}"
+    port: "{{ smtp_port | default(587) }}"
+    username: "{{ smtp_username }}"
+    password: "{{ smtp_password }}"
+    to: "{{ alert_email }}"
+    subject: "Disk usage alert on {{ inventory_hostname }}"
+    body: |
+      Disk usage has exceeded the configured threshold.
+
+      Host: {{ inventory_hostname }}
+      Current disk usage: {{ disk_usage.stdout }}%
+      Threshold: 80%
+  when: disk_usage.stdout | int > 80

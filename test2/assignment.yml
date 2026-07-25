@@ -1,0 +1,17 @@
+---
+- name: Run selected operation
+  hosts: all
+  gather_facts: true
+
+  tasks:
+    - name: Verify and install required services
+      ansible.builtin.include_tasks: verify_install.yml
+      when: operation == "verify_install"
+
+    - name: Check disk usage
+      ansible.builtin.include_tasks: check_disk.yml
+      when: operation == "check-disk"
+
+    - name: Check application status
+      ansible.builtin.include_tasks: check_status.yml
+      when: operation == "check-status"

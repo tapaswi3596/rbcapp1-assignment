@@ -1,0 +1,47 @@
+---
+- name: Check whether httpd is installed
+  ansible.builtin.command:
+    cmd: systemctl is-active httpd
+  register: httpd_status
+  changed_when: false
+  failed_when: false
+  when: inventory_hostname in groups["httpd_servers"]
+
+- name: Display httpd status
+  ansible.builtin.debug:
+    msg: "httpd status: {{ httpd_status.stdout }}"
+  when:
+    - inventory_hostname in groups["httpd_servers"]
+    - httpd_status is defined
+
+
+- name: Check whether RabbitMQ is installed
+  ansible.builtin.command:
+    cmd: systemctl is-active rabbitmq-server
+  register: rabbitmq_status
+  changed_when: false
+  failed_when: false
+  when: inventory_hostname in groups["rabbitmq_servers"]
+
+- name: Display RabbitMQ status
+  ansible.builtin.debug:
+    msg: "RabbitMQ status: {{ rabbitmq_status.stdout }}"
+  when:
+    - inventory_hostname in groups["rabbitmq_servers"]
+    - rabbitmq_status is defined
+
+
+- name: Check whether PostgreSQL is installed
+  ansible.builtin.command:
+    cmd: systemctl is-active postgresql
+  register: postgresql_status
+  changed_when: false
+  failed_when: false
+  when: inventory_hostname in groups["postgresql_servers"]
+
+- name: Display PostgreSQL status
+  ansible.builtin.debug:
+    msg: "PostgreSQL status: {{ postgresql_status.stdout }}"
+  when:
+    - inventory_hostname in groups["postgresql_servers"]
+    - postgresql_status is defined

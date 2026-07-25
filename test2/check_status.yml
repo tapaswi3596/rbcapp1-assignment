@@ -1,0 +1,12 @@
+---
+- name: Query application health endpoint
+  ansible.builtin.uri:
+    url: http://localhost:5000/healthcheck
+    method: GET
+    return_content: true
+    status_code: 200
+  register: application_health
+
+- name: Display application health
+  ansible.builtin.debug:
+    var: application_health.json
