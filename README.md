@@ -1,4 +1,7 @@
-#Service Monitoring and Automation Assignment
+---
+
+
+# Service Monitoring and Automation Assignment
 
 
 This project contains three independent tasks:
@@ -41,7 +44,7 @@ rbcapp1/
     └── filtered_sales.csv
 
 
-
+---
 
 ## Prerequisites
 
@@ -56,7 +59,7 @@ The following software is required:
 -Ansible
 -Docker, As Elasticsearch is run as a container
 
-
+---
 
 ## Initial Setup
 
@@ -82,6 +85,7 @@ pip install -r requirements.txt
 
 
 
+---
 
 
 ## Test 1: Service Monitoring
@@ -292,6 +296,7 @@ Output:
 {"application":"rbcapp1","status":"UP"}
 
 
+---
 
 
 ## Test 2: Ansible Automation
@@ -641,6 +646,7 @@ host2                      : ok=4    changed=0    unreachable=0    failed=0    s
 host3                      : ok=4    changed=0    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0
 
 
+---
 
 
 ## Test 3: CSV Processing
@@ -717,7 +723,7 @@ street,city,zip,state,beds,baths,sq__ft,type,sale_date,price,latitude,longitude
 The output CSV keeps the original columns and contains only the filtered property records.
 
 
-
+---
 
 ## Testing Summary
 
@@ -773,6 +779,7 @@ cd test3
 python filter_sales.py
 
 
+---
 
 ## Design Notes
 
@@ -790,7 +797,7 @@ The solution is intentionally divided into separate components:
 -The Python monitor continuously checks and records service health, while Ansible provides operational checks and automation commands.
 
 
-
+---
 
 ## Security Notes
 
@@ -808,7 +815,7 @@ In particular:
 -The SMTP values used for testing should be supplied at runtime or stored securely outside the source code.
 
 
-
+---
 
 ## Result
 
