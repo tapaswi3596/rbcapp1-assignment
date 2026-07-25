@@ -1,6 +1,3 @@
----
-
-
 # Service Monitoring and Automation Assignment
 
 
