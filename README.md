@@ -17,24 +17,23 @@ The project was developed and tested in a Linux/WSL environment.
 
 ## Project Structure
 
-```text		
+```text
 rbcapp1/
-│
 ├── README.md
 ├── requirements.txt
-│
+├── service_status/
+│   └── Generated service status JSON files
+├── uploads/
+│   └── Uploaded service status JSON files
 ├── test1/
 │   ├── monitor_services.py
-│   ├── rest_service.py
-│   └── service_status/
-│
+│   └── rest_service.py
 ├── test2/
 │   ├── inventory
 │   ├── assignment.yml
 │   ├── verify_install.yml
 │   ├── check_disk.yml
 │   └── check_status.yml
-│
 └── test3/
     ├── filter_sales.py
     ├── Assignment python.csv
