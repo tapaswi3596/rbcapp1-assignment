@@ -554,9 +554,6 @@ If usage exceeds the configured threshold, the playbook displays a warning and c
 
 
 
-
-
-
 ### SMTP parameters can be passed at runtime:
 
 
@@ -573,11 +570,26 @@ ansible-playbook \
   -e alert_email=Recipient_email_address
 ```
 
-
-
 Credentials should not be committed to the repository.
 
+## Disk Space Usage Threshold Testing
 
+
+```text
+The application is configured to send an alert email when the disk space usage exceeds **80%**.
+
+To validate the alerting functionality without consuming actual disk space, the threshold value in the YAML configuration file was **temporarily modified** to a lower value. This allowed the alert condition to be triggered, and the email notification was successfully verified.
+
+After successful testing, the configuration should be reverted to the original production threshold of **greater than 80%**.
+
+**Note:** The temporary threshold modification was performed solely for testing purposes and is not intended for production use.
+
+
+The alert email generated after the disk usage threshold was exceeded is shown below.
+
+![Disk Space Alert Email](images/disk-alert-email.png)
+
+```
 
 
 #### Check application health
